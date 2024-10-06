@@ -1,0 +1,62 @@
+
+#Trabalho individual- Ana Luiza Dantas Holtermann
+
+Análise de Rede de Coautoria - Scopus
+
+#Introdução
+Este projeto visou criar e analisar uma rede de coautoria utilizando dados extraídos da plataforma Scopus. O trabalho foi realizado com base na atividade proposta, que exigia a criação de uma rede de autores que colaboraram na escrita de artigos científicos, seguida da análise dessa rede, incluindo o cálculo de densidade e a geração de gráficos relevantes.
+
+#Estrutura dos Dados
+Os dados foram extraídos da plataforma Scopus e continham informações sobre os seguintes elementos:
+
+#Engenharia 
+#Ciencia da Computação
+
+Nome dos autores: Os autores de cada artigo.
+Identificadores únicos dos autores: IDs para distinguir os autores.
+Título do artigo: Nome do artigo publicado.
+Ano de publicação: O ano em que o artigo foi publicado.
+Essas informações foram processadas para gerar uma rede de coautoria, onde:
+
+Vértices representam os autores.
+Arestas representam as colaborações entre autores em artigos.
+Etapas do Processo
+
+1. Carregamento e Processamento dos Dados
+Utilizamos a biblioteca pandas para carregar os dados do arquivo .csv fornecido. A coluna de autores foi utilizada para identificar as colaborações em cada artigo.
+
+2. Criação da Rede de Coautoria
+Com a biblioteca NetworkX, criamos uma rede em que cada autor é um vértice, e uma aresta foi adicionada entre dois autores sempre que eles colaboraram em um artigo. Para cada artigo com mais de dois autores, foi criado um conjunto de arestas que conecta todos os coautores.
+
+3. Análises Realizadas
+3.1. Densidade da Rede
+A densidade da rede foi calculada usando a função nx.density(). A densidade mede o quão conectada a rede está em relação ao número máximo possível de conexões. A densidade da rede completa foi:
+
+Densidade da rede completa: 0.142 (aproximadamente 14%).
+3.2. Subgrafo de Autores com Pelo Menos 3 Coautores
+Foi criado um subgrafo contendo apenas autores que possuem pelo menos 3 coautores. A densidade deste subgrafo foi:
+
+Densidade do subgrafo: 0.153 (aproximadamente 15%).
+3.3. Histograma dos Graus
+Criamos um histograma que mostra a distribuição dos graus, ou seja, o número de coautores que cada autor tem na rede. O histograma foi gerado usando a biblioteca matplotlib.
+
+4. Visualização dos Resultados
+Foram gerados três gráficos para facilitar a interpretação visual dos resultados:
+
+Grafo completo da rede de coautoria.
+Subgrafo de autores com pelo menos 3 coautores.
+Histograma da distribuição dos graus dos vértices.
+
+#Resultados:
+
+A rede completa mostrou uma densidade de 14%, o que indica que muitos autores colaboraram entre si, mas ainda há muitos autores que não possuem conexões diretas com outros.
+O subgrafo com autores que possuem pelo menos 3 coautores teve uma densidade ligeiramente maior, 15%, mostrando que essa sub-rede é um pouco mais conectada.
+O histograma dos graus revelou que a maioria dos autores tem entre 1 a 5 coautores, com poucos autores colaborando com um número muito grande de outros autores.
+
+#Ferramentas Utilizadas
+Python
+
+#Bibliotecas:
+NetworkX (criação e análise da rede)
+Matplotlib (visualização dos gráficos)
+Pandas (manipulação dos dados)
