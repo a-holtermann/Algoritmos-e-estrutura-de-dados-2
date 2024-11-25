@@ -1,0 +1,118 @@
+Análise da Rede de Coautoria - PPgEEC
+Este projeto analisa a rede de coautoria dos professores permanentes do Programa de Pós-Graduação em Engenharia Elétrica e de Computação (PPgEEC). A análise utiliza métricas de centralidade, estrutura de k-core e detecção de comunidades para gerar insights relevantes sobre a rede.
+
+Objetivo
+O objetivo deste trabalho é aplicar conceitos de análise de redes para interpretar características importantes da rede de coautoria. A partir disso, foram geradas visualizações que destacam:
+
+A centralidade dos nós baseada em métricas como grau e closeness centrality.
+A estrutura interna da rede, evidenciada pelo k-core e k-shell.
+As comunidades identificadas por meio do algoritmo de Louvain.
+
+Como o Projeto Foi Desenvolvido:
+A rede foi carregada a partir de um arquivo em formato GEXF utilizando a biblioteca NetworkX.
+
+Foram calculadas diversas métricas para caracterizar os nós da rede, como:
+Grau: Número de conexões diretas de cada nó.
+Closeness Centrality: Mede a proximidade de um nó em relação aos outros.
+Betweenness Centrality: Mede o papel de um nó como intermediário nas conexões.
+Eigenvector Centrality: Mede a influência de um nó com base na importância de seus vizinhos.
+K-Core e K-Shell: Estruturas que evidenciam a robustez e as partes mais densas da rede.
+O algoritmo de Louvain foi aplicado para identificar comunidades dentro da rede.
+
+Três visualizações foram geradas de acordo com os requisitos do trabalho.
+
+Requisito #01: Grau e Closeness Centrality
+Nesta visualização:
+
+O tamanho dos vértices é proporcional ao grau dos nós, destacando aqueles com mais conexões.
+As cores dos vértices representam a Closeness Centrality, evidenciando nós que estão mais "perto" dos outros em termos de caminhos na rede.
+Interpretação:
+
+Nós maiores representam indivíduos com maior número de colaborações diretas.
+Nós com cores mais intensas (valores altos de Closeness Centrality) indicam aqueles estrategicamente mais centrais na rede.
+Arquivo gerado: requisito_01.png
+
+Requisito #02: K-Core e K-Shell
+Nesta visualização:
+
+O tamanho dos vértices é proporcional ao grau.
+As cores representam os valores de k-shell, que indicam a profundidade do nó dentro da estrutura da rede (os valores mais altos estão nos núcleos mais densos).
+Interpretação:
+
+Nós coloridos com valores altos de k-shell pertencem aos núcleos mais conectados da rede. Esses nós tendem a ser os mais robustos e menos suscetíveis a desconexões.
+Arquivo gerado: requisito_02.png
+
+Requisito #03: Comunidades Detectadas
+Nesta visualização:
+
+As cores dos vértices representam as comunidades detectadas pelo algoritmo de Louvain.
+O tamanho dos vértices é proporcional ao grau.
+Interpretação:
+
+A detecção de comunidades ajuda a identificar agrupamentos de professores que colaboram mais frequentemente entre si. Esses grupos podem representar subáreas de pesquisa ou colaborações frequentes dentro do programa.
+Arquivo gerado: requisito_03.png
+
+Resultados Obtidos
+Métricas Principais
+As métricas calculadas forneceram insights sobre a estrutura da rede:
+
+Grau: Identificou os nós mais colaborativos.
+Closeness Centrality: Destacou os nós mais "próximos" do restante da rede.
+K-Core e K-Shell: Revelaram a densidade interna da rede, evidenciando os principais grupos centrais.
+Comunidades: Os agrupamentos encontrados pelo algoritmo de Louvain ajudam a compreender a divisão estrutural da rede.
+Visualizações
+Todas as visualizações foram salvas como imagens .png no mesmo diretório do script, permitindo uma análise mais clara da rede e suas características.
+
+Como Executar
+Dependências
+Certifique-se de ter as seguintes bibliotecas instaladas:
+
+NetworkX
+Matplotlib
+Community-Louvain
+Instale as dependências com o comando:
+
+bash
+Copiar código
+pip install networkx matplotlib python-louvain
+Passos
+Certifique-se de que o arquivo BSD.gexf está no mesmo diretório que o script Python.
+Execute o script com:
+bash
+Copiar código
+python analise_redes.py
+Os gráficos serão gerados e salvos como:
+requisito_01.png
+requisito_02.png
+requisito_03.png
+
+
+Requisito 01: Grau e Closeness Centrality
+Paleta de Cores: A paleta viridis, que varia de azul (valores baixos) a amarelo (valores altos).
+Significado das cores:
+Os nós amarelos representam valores altos de centralidade de proximidade (Closeness Centrality), indicando que esses nós estão "próximos" de todos os outros nós, no sentido de distância geodésica.
+Os nós azuis têm valores baixos de centralidade de proximidade, sendo menos acessíveis dentro da rede.
+Por que as cores são importantes aqui?
+A centralidade de proximidade mede a eficiência de um nó em se conectar a outros. Usar uma escala de cor ajuda a visualizar rapidamente os nós que desempenham papéis centrais na rede.
+
+Requisito 02: K-Core e K-Shell
+Paleta de Cores: A paleta plasma, que varia de roxo (valores baixos) a vermelho e amarelo (valores altos).
+Significado das cores:
+Os nós com cores quentes (amarelo/vermelho) pertencem a K-cores mais elevados, indicando que esses nós fazem parte de subestruturas densamente conectadas da rede.
+Os nós com cores frias (roxo) estão em K-cores mais baixos, sendo mais periféricos e menos conectados ao núcleo da rede.
+Por que as cores são importantes aqui?
+A decomposição em K-cores ajuda a identificar a hierarquia estrutural da rede. Usar uma escala de cor facilita identificar visualmente as regiões densas (núcleos) e as mais esparsas (periferias).
+
+Requisito 03: Comunidades Detectadas
+Paleta de Cores: A paleta tab10, que fornece cores distintas para diferentes categorias ou grupos.
+Significado das cores:
+Cada cor representa uma comunidade detectada pelo algoritmo de Louvain. Os nós que compartilham a mesma cor estão mais conectados entre si do que com nós de outras comunidades.
+Por que as cores são importantes aqui?
+O uso de cores diferentes para cada comunidade permite identificar de forma clara os agrupamentos naturais da rede, facilitando a análise de modularidade.
+
+
+Conclusão
+Este projeto aplicou métricas de análise de redes para explorar características importantes da rede de coautoria do PPgEEC. As visualizações geradas permitiram identificar nós centrais, estruturas internas robustas e agrupamentos colaborativos. Este trabalho destaca a aplicabilidade de métodos de análise de redes em dados reais.
+
+Autora: Ana Luiza Holtermann
+Data de Entrega: 26 de Novembro de 2024
