@@ -1,1 +1,113 @@
 
+Descrição do Trabalho
+
+Este trabalho visa avaliar o desempenho de dois algoritmos fornecidos (“solver_closest” e “solver_kth_largest”) utilizando entradas aleatórias e reproduzíveis. O objetivo é analisar como cada algoritmo se comporta em termos de tempo de execução à medida que o tamanho do vetor de entrada aumenta.
+
+Os algoritmos são instrumentados com o módulo time para medir tempos de execução, e os resultados são visualizados com gráficos, incluindo intervalos de confiança (IC).
+
+Objetivos:
+
+Avaliar e comparar o desempenho de solver_closest e solver_kth_largest com entradas de tamanhos variados.
+
+Garantir que as entradas sejam aleatórias, mas reproduzíveis (usando numpy.random.seed).
+
+Calcular o tempo médio e os intervalos de confiança para cada tamanho de entrada.
+
+Gerar gráficos que mostram:
+
+Tamanho do vetor no eixo X.
+
+Tempo médio de execução no eixo Y.
+
+Barras de erro representando os intervalos de confiança.
+
+Requisitos Atendidos
+
+Instrumentação com time: Os códigos foram ajustados para medir o tempo de execução com precisão.
+
+Execução em tamanhos variados: Vetores de tamanho crescente, de  a , foram testados.
+
+Reprodução com numpy.random.seed: Garantia de entradas consistentes em diferentes execuções.
+
+Cálculo de intervalos de confiança: Utilização da distribuição t-Student para calcular ICs.
+
+Gráficos gerados: Gráficos claros e legíveis foram gerados para comparar os dois algoritmos.
+
+Estrutura do Repositório
+
+solver_closest.py: Implementação do algoritmo para encontrar o valor mais próximo em uma BST.
+
+solver_kth_largest.py: Implementação do algoritmo para encontrar o k-ésimo maior elemento em uma BST.
+
+
+Metodologia
+
+1. Configuração Inicial
+
+Instrumentamos os algoritmos com funções auxiliares para medir o tempo de execução usando time.time().
+
+Garantimos entradas reproduzíveis utilizando numpy.random.seed(42).
+
+2. Execução dos Testes
+
+Para cada tamanho de vetor, realizamos múltiplas execuções (15 repetições por padrão).
+
+Calculamos o tempo médio de execução e o intervalo de confiança (IC) a 95%.
+
+3. Geração de Gráficos
+
+Usamos matplotlib para criar gráficos com:
+
+Barras de erro representando ICs.
+
+Tamanhos de entrada no eixo X.
+
+Tempo médio de execução no eixo Y.
+
+Resultados Obtidos
+
+Desempenho de solver_closest
+
+Algoritmo eficiente para tamanhos moderados, com tempos de execução na ordem de microssegundos.
+
+Escalonamento linear esperado devido à natureza da BST desbalanceada.
+
+Desempenho de solver_kth_largest
+
+Algoritmo apresentou maior tempo de execução devido à necessidade de ordenação.
+
+Crescimento significativo no tempo com o aumento do tamanho da entrada.
+
+Gráficos foram gerados para ilustrar as diferenças entre os dois algoritmos.
+
+Reprodução
+
+Dependências
+
+Certifique-se de ter instalados:
+
+numpy
+
+scipy
+
+matplotlib
+
+Para instalar:
+
+pip install numpy scipy matplotlib
+
+Conclusões
+
+Este trabalho demonstrou:
+
+A importância de instrumentar algoritmos para medir desempenho.
+
+A utilidade de entradas reproduzíveis para comparações justas.
+
+Como intervalos de confiança ajudam a validar a confiabilidade dos resultados.
+
+A abordagem adotada forneceu uma análise robusta e replicável, adequada para avaliar algoritmos em diferentes cenários.
+
+Autora: Ana Holtermann
+
+Este trabalho foi realizado de forma individual, seguindo as orientações fornecidas pela disciplina. Para mais detalhes, consulte os códigos no repositório e o vídeo explicativo incluído.
