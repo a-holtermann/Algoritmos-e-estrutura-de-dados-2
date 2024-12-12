@@ -1,0 +1,25 @@
+Os dois gráficos representam o desempenho das funções `solver_closest` e `solver_kth_largest` em termos de tempo médio de execução em segundos, conforme o tamanho do vetor de entrada aumenta.
+
+Desempenho do Solver Closest
+[Gráfico de desempenho do Solver Closest](Saida.1.png)
+
+O gráfico mostra o desempenho da função `solver_closest`. O eixo x representa o tamanho do vetor de entrada (número de elementos inseridos na árvore binária de busca), enquanto o eixo y representa o tempo médio de execução em segundos.
+
+Observação:
+- A função apresenta tempos médios de execução muito baixos, quase constantes, independentemente do tamanho do vetor.
+- Isso sugere que a complexidade da função `solver_closest` é eficiente para os tamanhos de entrada testados, mas os tempos são tão pequenos que podem estar sujeitos a imprecisões na medição ou limitações do ambiente.
+
+ Desempenho do Solver Kth Largest
+[Gráfico de desempenho do Solver Kth Largest](Saida.2.png)
+
+O gráfico mostra o desempenho da função `solver_kth_largest`. Similarmente, o eixo x representa o tamanho do vetor, enquanto o eixo y apresenta o tempo médio de execução em segundos.
+
+Observações:
+- Diferente do `solver_closest`, a função `solver_kth_largest` apresenta um crescimento notável no tempo de execução à medida que o tamanho do vetor aumenta.
+- Isso reflete que a complexidade dessa função depende diretamente do número de elementos na árvore, especialmente por realizar um percurso in-order para ordenar os elementos.
+- O comportamento demonstra um padrão de crescimento aproximadamente linear no intervalo testado.
+
+Intervalo de Confiança (IC)
+Em ambos os gráficos, as barras de erro representam o intervalo de confiança (IC) de 95% do tempo médio de execução. Para o `solver_closest`, o IC é mais evidente no início (valores muito baixos), enquanto para o `solver_kth_largest`, o IC cresce conforme o tempo médio aumenta.
+
+Essas informações podem ajudar a identificar qual função é mais adequada para diferentes cenários, considerando o tamanho da entrada e os requisitos de desempenho.
