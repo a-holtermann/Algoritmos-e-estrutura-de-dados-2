@@ -1,1 +1,127 @@
+Comparação de Algoritmos e Visualização de Grafos em Natal-RN
+
+Este projeto utiliza bibliotecas de Python, como OSMnx e NetworkX, para trabalhar com grafos e analisar trajetos em Natal-RN. O objetivo principal é implementar e comparar algoritmos de Dijkstra, além de calcular e visualizar uma Árvore Geradora Mínima (MST) usando o algoritmo de Kruskal.
+
+Estrutura do Código
+1. Preparação do Grafo
+A função prepare_graph simplifica e converte o grafo em não-direcionado, garantindo que todas as arestas tenham um atributo 'length'.
+2. Dijkstra com Min-Heap
+A função dijkstra_min_heap implementa o algoritmo de Dijkstra usando uma Min-Heap para encontrar o menor caminho entre dois nós.
+3. Dijkstra com NetworkX
+A função dijkstra_networkx utiliza a função embutida do NetworkX para calcular o menor caminho.
+4. Visualização dos Caminhos
+A função visualize_dijkstra_paths exibe os menores caminhos calculados entre dois locais em Natal-RN, traçando as rotas sobre o mapa.
+5. Árvore Geradora Mínima (MST)
+A função kruskal_mst calcula a MST usando o algoritmo de Kruskal.
+A função visualize_kruskal_mst visualiza a MST no mapa da cidade.
+6. Comparação de Dijkstra
+A função compare_dijkstra compara os caminhos mais curtos calculados pelos dois métodos de Dijkstra para cinco pares de locais em Natal-RN.
+
+Os algoritmos de Dijkstra foram comparados com base nos seguintes pares de locais:
+
+Forte dos Reis Magos → Praia de Ponta Negra
+Parque das Dunas → Arena das Dunas
+Shopping Midway Mall → Barreira do Inferno
+Farol de Mãe Luiza → Praia dos Artistas
+Museu Câmara Cascudo → UFRN (Campus Central)
+Observações:
+
+Ambos os métodos produziram resultados semelhantes.
+O algoritmo baseado em NetworkX apresentou execução mais simples e rápida devido à otimização interna.
+O método Min-Heap oferece maior controle sobre os detalhes do algoritmo.
+Visualização da MST
+A Árvore Geradora Mínima, calculada com o algoritmo de Kruskal, revelou conexões eficientes entre os principais pontos de interesse, minimizando a distância total percorrida.
+
+Notas Adicionais
+Este trabalho é focado em Natal-RN, mas pode ser adaptado para outras regiões.
+Certifique-se de ter uma conexão estável com a internet para baixar os dados do OpenStreetMap.
+
+
+
+Análise Detalhada do Código
+
+1. Preparação do Grafo (prepare_graph)
+Objetivo: Limpar e preparar o grafo baixado do OpenStreetMap para análise.
+Tarefas realizadas:
+Converte o grafo para não-direcionado (get_undirected), garantindo que os caminhos sejam bidirecionais.
+Simplifica o grafo removendo nós redundantes (simplify_graph).
+Garante que todas as arestas tenham o atributo length, essencial para cálculos de distância.
+
+2. Algoritmo de Dijkstra
+
+a) Implementação com Min-Heap (dijkstra_min_heap)
+Funcionamento:
+Inicializa todas as distâncias como infinito (inf) e define a distância do nó inicial como 0.
+Utiliza uma Min-Heap para selecionar o nó com a menor distância no momento.
+Atualiza as distâncias dos nós vizinhos com base no peso das arestas.
+Retorna a distância mínima entre o nó de origem e o nó de destino.
+Vantagens:
+Controle granular do processo de cálculo.
+Permite modificações no algoritmo, se necessário.
+Limitação:
+Mais complexo em comparação com a implementação embutida do NetworkX.
+
+b) Implementação com NetworkX (dijkstra_networkx)
+Funcionamento:
+Utiliza a função nativa shortest_path_length do NetworkX.
+Leva em consideração o peso das arestas (length).
+Vantagens:
+Simplicidade e eficiência.
+Beneficia-se das otimizações internas do NetworkX.
+Limitação:
+Menor flexibilidade para personalizações.
+
+
+3. Visualização dos Caminhos (visualize_dijkstra_paths)
+Objetivo: Exibir os menores caminhos em um mapa geoespacial.
+Etapas:
+Localiza os nós mais próximos dos pontos de interesse fornecidos.
+Calcula o menor caminho entre os nós de origem e destino.
+Traça o caminho no mapa usando a biblioteca OSMnx, com destaque em vermelho.
+Personalização:
+Configuração de cores, tamanhos de nós e arestas.
+Define uma área de visualização amigável (figsize).
+
+
+4. Algoritmo de Kruskal para MST (kruskal_mst)
+Objetivo: Calcular a Árvore Geradora Mínima (MST) do grafo.
+Funcionamento:
+Usa a função minimum_spanning_tree do NetworkX, que implementa o algoritmo de Kruskal.
+Minimiza a soma dos pesos (length) das arestas da árvore.
+Aplicação:
+Útil para identificar conexões eficientes entre os nós, como redes de transporte.
+
+
+5. Visualização da MST (visualize_kruskal_mst)
+Objetivo: Exibir a Árvore Geradora Mínima no mapa da cidade.
+Etapas:
+Prepara o grafo da cidade.
+Calcula a MST usando Kruskal.
+Plota o grafo com destaque para as conexões da MST.
+
+
+6. Comparação de Algoritmos de Dijkstra (compare_dijkstra)
+Objetivo: Avaliar os dois métodos de Dijkstra para múltiplos pares de locais.
+Funcionamento:
+Seleciona cinco pares de locais de interesse em Natal-RN.
+Calcula os caminhos com ambos os métodos (Min-Heap e NetworkX).
+Exibe os resultados visualmente para análise.
+Características Técnicas e Desafios
+Uso do OSMnx:
+
+Ferramenta poderosa para obtenção de grafos rodoviários diretamente do OpenStreetMap.
+Permite integração com dados reais de localização.
+Abordagem Modular:
+
+Cada funcionalidade é isolada em funções, permitindo reutilização e testes independentes.
+Desafios de Performance:
+
+Processar grafos grandes pode consumir memória e CPU significativas.
+O uso de Min-Heap otimiza o desempenho para cálculos de menor caminho.
+Visualizações Intuitivas:
+
+Gráficos coloridos tornam os resultados mais compreensíveis.
+Permite validação visual dos cálculos.
+
+Ana Luiza Holtermann
 
