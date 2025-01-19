@@ -1,1 +1,231 @@
+Linguistic Network Analysis Project with NLP and Graphs
+
+This project focuses on building, analyzing, and visualizing linguistic networks using Natural Language Processing (NLP) and graph analysis techniques. It covers the entire workflow from text selection and preprocessing to network creation, analysis, and visualization.
+
+Overview
+
+The primary goal of this project is to explore linguistic relationships by generating co-occurrence networks from texts. By leveraging libraries like SpaCy and NetworkX, the project identifies key patterns and entities in the text, computes network metrics, and generates visualizations for deeper analysis.
+
+Detailed Workflow
+
+1. Text Selection
+
+The project uses publicly available texts from Project Gutenberg, a free library of ebooks. For this implementation, two books were selected:
+
+Pride and Prejudice by Jane Austen:
+
+URL: Pride and Prejudice Text
+
+Chosen because of its rich narrative and frequent use of proper nouns, making it ideal for analyzing relationships between characters and locations.
+
+Moby Dick by Herman Melville:
+
+URL: Moby Dick Text
+
+This book provides a contrasting style and vocabulary, allowing for an interesting comparative analysis of networks.
+
+The books dictionary in the script specifies the texts, including the URL and the line range to process. For example:
+
+books = {
+    "Pride and Prejudice": {
+        "url": "https://www.gutenberg.org/files/1342/1342-0.txt",
+        "start_line": 0,
+        "end_line": 3000
+    },
+    "Moby Dick": {
+        "url": "https://www.gutenberg.org/files/2701/2701-0.txt",
+        "start_line": 0,
+        "end_line": 3000
+    }
+}
+
+The line range ensures that only relevant sections of the text are analyzed, making the processing manageable and focused.
+
+2. Text Cleaning and Preprocessing
+
+The script performs the following steps:
+
+Download: The text is fetched from the specified URL.
+
+Line Filtering: Only the specified range of lines is kept, removing unnecessary prefaces or appendices.
+
+Tokenization and Stopword Removal:
+
+Using SpaCy, the text is split into individual words (tokens).
+
+Common stopwords (e.g., "and," "the") are removed to focus on meaningful content.
+
+Normalization: All tokens are converted to lowercase for consistency.
+
+3. Part-of-Speech (PoS) Tagging and Named Entity Recognition (NER)
+
+PoS Tagging: Identifies proper nouns (NNP) in the text, which often represent significant entities like names or places.
+
+NER: Extracts named entities of the following types:
+
+PERSON: Individual names.
+
+ORG: Organizations or groups.
+
+GPE: Geopolitical entities like cities or countries.
+
+Results are saved as CSV files for transparency and reproducibility, stored in the results directory.
+
+4. Network Creation
+
+Co-occurrence Graph:
+
+Tokens are analyzed within a sliding window of size 3 (configurable).
+
+Words that appear together within this window are connected by edges.
+
+Graph Construction:
+
+Nodes represent words or entities.
+
+Edges represent co-occurrence relationships.
+
+The graph is built using the NetworkX library.
+
+5. Network Analysis
+
+The script computes detailed metrics for each network, including:
+
+Density: Indicates how interconnected the graph is.
+
+Centrality Measures:
+
+Betweenness Centrality: Identifies nodes that act as bridges.
+
+Closeness Centrality: Measures how close a node is to others.
+
+Degree Centrality: Counts the number of connections per node.
+
+Clustering Coefficient: Indicates the tendency of nodes to form tightly-knit groups.
+
+Community Detection:
+
+Uses the modularity maximization algorithm to identify groups of closely related nodes.
+
+Metrics are saved in CSV files within the results/metrics directory.
+
+6. Graph Visualization
+
+Using Matplotlib, the project generates:
+
+Co-occurrence Graphs: Displays relationships between words in the text.
+
+Ego Networks: Focused subgraphs centered on key entities, such as main characters.
+
+Visualizations are saved as PNG files in the results/graphs directory.
+
+7. Exporting Graphs
+
+Graphs are exported for further analysis:
+
+Gephi Exports: Graphs are saved in .gexf format, allowing for interactive visualization in Gephi.
+
+NetworkX Exports: Graphs are saved in formats like .pkl and .graphml for future use.
+
+Challenges Encountered
+
+Handling Large Texts:
+
+Full books can contain tens of thousands of lines, requiring efficient processing.
+
+The solution uses line ranges to limit the analysis to manageable portions.
+
+Balancing Detail and Readability:
+
+Visualizations of large graphs can become cluttered.
+
+Ego networks and filtered visualizations address this issue.
+
+Community Detection:
+
+Defining meaningful communities in dense graphs is computationally intensive.
+
+The modularity algorithm was chosen for its efficiency and interpretability.
+
+Stopword Removal:
+
+Ensuring a comprehensive stopword list is crucial to focus on meaningful tokens.
+
+Execution Time
+
+Preprocessing and PoS/NER Analysis:
+
+Each text takes approximately 3–5 minutes, depending on its length.
+
+Network Creation and Analysis:
+
+Co-occurrence graph generation is fast (1–2 minutes per text).
+
+Visualization and Export:
+
+Generating and exporting visualizations can take 2–4 minutes.
+
+Total runtime for two books: ~15–20 minutes.
+
+Directory Structure
+
+The project organizes results into the following folders:
+
+results/graphs: Graph visualizations.
+
+results/metrics: Network metrics and community data.
+
+results/gephi: Graph exports in .gexf format.
+
+results/networkx: Graph exports for NetworkX.
+
+How to Run the Project
+
+1. System Requirements
+
+Python 3.8+
+
+Required libraries:
+
+pip install requests spacy networkx pandas matplotlib nltk
+
+Download the SpaCy language model:
+
+python -m spacy download en_core_web_sm
+
+2. Execution Steps
+
+Configure the books dictionary with the desired texts.
+
+Run the script:
+
+python main.py
+
+Review the outputs in the results directory.
+
+Generated Outputs
+
+Word Frequency Graphs:
+
+Bar charts of the 20 most frequent words in each text.
+
+Co-occurrence Graphs:
+
+Visualizations showing relationships between words within a defined context window.
+
+Ego Networks:
+
+Subgraphs centered on specific entities to highlight local connections.
+
+Metrics:
+
+CSV files with detailed network metrics.
+
+Exports:
+
+Graph files for external tools (e.g., Gephi and NetworkX).
+
+
+
+
 
