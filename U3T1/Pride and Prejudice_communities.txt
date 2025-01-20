@@ -1,2 +1,0 @@
-Número de comunidades: 16
-Tamanhos das três maiores comunidades: [228, 202, 194]
