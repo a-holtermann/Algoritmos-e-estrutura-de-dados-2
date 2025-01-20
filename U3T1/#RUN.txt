@@ -1,0 +1,50 @@
+Tutorial
+This tutorial will guide you through using the provided Python script to analyze books using NLP techniques and network analysis.
+
+Step 1: Download and Clean Text
+The script starts by downloading books from URLs and cleaning the text for analysis. It fetches specific line ranges from the books and removes unwanted characters.
+
+python
+raw_text = download_and_clean_text(config["url"], config["start_line"], config["end_line"])
+Step 2: Text Preprocessing
+Once the text is cleaned, the script tokenizes the text and removes stopwords (commonly used words such as "the", "and", "is", etc.) to focus on meaningful words.
+
+python
+tokens = preprocess_text(raw_text)
+Step 3: Word Frequency Analysis
+The script generates a bar chart of the top 20 most frequent words in the book.
+
+python
+plot_word_comparison(tokens, title=f"Word Frequency - {book_name}", file_name=f"{book_name}_word_comparison")
+Step 4: Co-occurrence Graph
+A co-occurrence graph is built using tokens. The graph shows how often pairs of words appear in proximity to each other. The graph is then visualized and saved.
+
+python
+graph = create_cooccurrence_graph(tokens[:2000], window_size=3)
+visualize_graph(graph, title=f"Co-occurrence Graph - {book_name}", file_name=f"{book_name}_graph")
+Step 5: Graph Metrics
+Metrics such as density, clustering, and centrality are computed for the graph and saved in CSV format.
+
+python
+analyze_graph(graph, book_name)
+Step 6: Community Detection
+Communities within the graph are detected, helping identify clusters of words that often appear together.
+
+python
+communities = analyze_communities(graph, book_name)
+Step 7: Ego Network
+An ego network is created around a node (a word) and visualized to show the relationships between that word and its direct neighbors.
+
+python
+create_and_save_ego_network(graph, node, f"{book_name}_ego_network")
+Step 8: Exporting Graphs
+Graphs are exported in Gephi format for further analysis in visualization software and NetworkX format for advanced graph manipulation.
+
+python
+export_graph_to_gephi(graph, book_name)
+export_graph_networkx_formats(graph, book_name)
+Step 9: HTML Report
+The final step generates an HTML report with the embedded graphs in Base64 format.
+
+python
+generate_html_with_base64(book_graphs)
